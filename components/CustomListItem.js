@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ListItem, Avatar } from 'react-native-elements'
 
-const CustomListItem = () => {
+const CustomListItem = ({ id, chatName, enterChat}) => {
     return (
         <ListItem>
             <Avatar 
@@ -13,9 +13,12 @@ const CustomListItem = () => {
             />
 
             <ListItem.Content>
-                <ListItem.Title style={{fontWeight: "600"}}>
+                <ListItem.Title style={{fontWeight: "800"}}>
                     Group Project Chat
                 </ListItem.Title>
+                <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail">
+                    Most Recent Message
+                </ListItem.Subtitle>
             </ListItem.Content>
 
         </ListItem>
