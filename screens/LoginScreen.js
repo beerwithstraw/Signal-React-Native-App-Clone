@@ -20,8 +20,9 @@ const LoginScreen = ({ navigation }) => {
         return unsubscribe;
     }, [])
 
-    const SignIn = () => {
-
+    const SignIn = () => {  
+        auth.signInWithEmailAndPassword(email, password)
+            .catch(error => alert(error.message))
     }
 
 
