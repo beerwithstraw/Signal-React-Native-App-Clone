@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Button, Input, Image } from 'react-native-elements';
 import { KeyboardAvoidingView } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,12 +37,14 @@ const LoginScreen = () => {
                     type="password"
                     value={password} 
                     onChangeText={text => setPassword(text)}
+                    onSubmitEditing={SignIn}
                 />
             </View>
              
-            <Button containerStyle={styles.button} onPress={SignIn} title="Login"/>
-            <Button containerStyle={styles.button} type="outline" title="Register"/>
+            <Button raised containerStyle={styles.button} onPress={SignIn} title="Login"/>
+            <Button raised onPress={() => navigation.navigate("Register")} containerStyle={styles.button} type="outline" title="Register"/>
 
+            <View style={{height: 100}}/>
         </KeyboardAvoidingView>
     )
 }
