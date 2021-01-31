@@ -11,18 +11,35 @@ const ChatScreen = ({ navigation, route}) => {
             headerBackTitleVisible: false,
             headerTitleAlign: "left",
             headerTitle: () => (
-                <View style={{flexDirection: "row", alignItems: "center",}}>
+                <View style={{flexDirection: "row", alignItems: "center", marginLeft: -25}}>
                     <Avatar rounded source={{ uri: "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png"}}/>
-                    <Text style={{color: "white", marginLeft: 10, fontWeight: "700", fontSize: 18}}>
+                    <Text style={{color: "white", marginLeft: 10, fontWeight: "700", fontSize: 17}}>
                         {route.params.chatName}
                     </Text>
                 </View>
             ),
-            headerLeft: () => (
-                <TouchableOpacity style={{ marginLeft: 10}} onPress={navigation.goBack}>
-                    <AntDesign name="arrowleft" size={24} color="white"/>
-                </TouchableOpacity>
-            ), 
+            // headerLeft: () => (
+            //     <TouchableOpacity style={{ marginLeft: 10}} onPress={navigation.goBack}>
+            //         <AntDesign name="arrowleft" size={24} color="white"/>
+            //     </TouchableOpacity>
+            // ), 
+            headerRight: () => (
+                <View 
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        width: 70,
+                        marginRight: 20
+                    }}    
+                >
+                    <TouchableOpacity>
+                        <FontAwesome name="video-camera" size={24} color="white"/>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Ionicons name="call" size={22} color="white"/>
+                    </TouchableOpacity>
+                </View>
+            ),
         })
     }, [navigation])
 
