@@ -21,7 +21,7 @@ const ChatScreen = ({ navigation, route}) => {
             headerTitleAlign: "left",
             headerTitle: () => (
                 <View style={{flexDirection: "row", alignItems: "center", marginLeft: -25}}>
-                    <Avatar rounded source={{ uri: "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png"}}/>
+                    <Avatar rounded source={{ uri: messages[0]?.data.photoURL || "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png"}}/>
                     <Text style={{color: "white", marginLeft: 10, fontWeight: "700", fontSize: 17}}>
                         {route.params.chatName}
                     </Text>
@@ -50,7 +50,7 @@ const ChatScreen = ({ navigation, route}) => {
                 </View>
             ),
         })
-    }, [navigation])
+    }, [navigation, messages])
 
     const sendMessage = () => {
         Keyboard.dismiss();
@@ -106,7 +106,7 @@ const ChatScreen = ({ navigation, route}) => {
                                     <Text style={styles.receiverText}> {data.message} </Text>
                                 </View>
                             ) : (
-                                <View style={styles.sender}>
+                                <View key={id} style={styles.sender}>
                                     <Avatar 
                                         rounded size={25} position="absolute"
                                         //Mobile
@@ -115,7 +115,7 @@ const ChatScreen = ({ navigation, route}) => {
                                         containerStyle={{ position: "absolute", bottom: -15, right: -5}}
                                         source={{uri: data.photoURL,}}
                                     />
-                                    <Text style={styles.senderText}> {data.message} </Text>
+                                   <Text style={styles.senderText}> {data.message} </Text>
                                     <Text style={styles.senderName}> {data.displayName} </Text>
 
                                 </View>
